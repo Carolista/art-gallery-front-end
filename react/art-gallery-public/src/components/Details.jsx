@@ -13,29 +13,29 @@ const Details = ({ artworks }) => {
       <div className="container">
         <div className="row">
           <div className="col-6">
-            <img className="card-image" src={artwork.details.getImageURL()} /> 
+            <img className="card-image" src={artwork.getImageURL()} /> 
           </div>
           <div className="col-6">
-            <h4 className="mb-4 mt-2 font-bold">{artwork.title + " (" + artwork.details.yearCreated + ")"}</h4>
+            <h4 className="mb-4 mt-2 font-bold">{artwork.title + " (" + artwork.yearCreated + ")"}</h4>
             <>
               <h5>Artist</h5>
-              <p>{artwork.artist.getFullName()} &mdash; {artwork.artist.location}</p>       
+              <p>{artwork.artist}</p>       
             </>
-            {artwork.details.description != '' && <>
+            {artwork.description != '' && <>
               <h5>Description</h5>
-              <p>{artwork.details.description}</p> 
+              <p>{artwork.description}</p> 
             </>}
             <>
-              <h5>{artwork.styles.length === 1 ? 'Style' : 'Styles'}</h5>
-              <p>{artwork.getFormattedStyles()}</p> 
+              <h5>Categories</h5>
+              <p>{artwork.categories}</p> 
             </>
-            {artwork.details.media != '' && <>
+            {artwork.media != '' && <>
               <h5>Media</h5>
-              <p>{artwork.details.media}</p> 
+              <p>{artwork.media}</p> 
             </>}
-            {artwork.details.getDimensions() != '' && <>
+            {artwork.dimensions != '' && <>
               <h5>Dimensions</h5>
-              <p>{artwork.details.getDimensions()}</p> 
+              <p>{artwork.dimensions}</p> 
             </>}
           </div>
         </div>

@@ -1,22 +1,20 @@
 export default class Artwork {
 
-  constructor(id, title, artist, styles, details) {
-    this.id = id;
-    this.title = title;
-    this.artist = artist; // Artist object
-    this.styles = styles; // array of Style objects
-    this.details = details; // ArtworkDetails object
-  }
+    // This object corresponds to the ArtworkDTO class in the ASP.NET application
 
-  getFormattedStyles() {
-    let styleNames = "";
-    for (let i=0; i < this.styles.length; i++) {
-        styleNames += this.styles[i].name;
-        if (i < this.styles.length - 1) {
-            styleNames += ", ";
-        }
+    constructor(id, title, artist, categories, yearCreated, media, description, dimensions, imageId) {
+        this.id = id;
+        this.title = title;
+        this.artist = artist;
+        this.categories = categories;
+        this.yearCreated = yearCreated;
+        this.media = media;
+        this.description = description;
+        this.dimensions = dimensions;
+        this.imageId = imageId;
     }
-    return styleNames;
-  }
 
+    getImageURL() {
+        return "https://drive.google.com/thumbnail?sz=w1000&id=" + this.imageId;
+    }
 }
