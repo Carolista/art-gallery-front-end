@@ -1,32 +1,36 @@
 <main>
   <p><a [href]="'/artworks'">&larr; Back to Artworks Gallery View</a></p>
   <h2>ARTWORK DETAILS</h2>
-  <div class="container">
+
+  <div *ngIf="isLoading || artwork == null">
+    <p>Retrieving artwork data...</p>
+  </div>
+  <div class="container" *ngIf="!isLoading && artwork != null">
     <div class="row">
       <div class="col-6">
-        <img class="card-image" [src]="artwork.details.getImageURL()" /> 
+        <img class="card-image" [src]="artwork.getImageURL()" /> 
       </div>
       <div class="col-6">
-        <h4 class="mb-4 mt-2 font-bold">{{artwork.title + " (" + artwork.details.yearCreated + ")"}}</h4>
+        <h4 class="mb-4 mt-2 font-bold">{{artwork.title + " (" + artwork.yearCreated + ")"}}</h4>
         <ng-container>
           <h5>Artist</h5>
-          <p>{{artwork.artist.getFullName()}} &mdash; {{artwork.artist.location}}</p>       
+          <p>{{artwork.artist}}</p>       
         </ng-container>
-        <ng-container *ngIf="artwork.details.description != ''">
+        <ng-container *ngIf="artwork.description != ''">
           <h5>Description</h5>
-          <p>{{artwork.details.description}}</p> 
+          <p>{{artwork.description}}</p> 
         </ng-container>
         <ng-container>
-          <h5>{{artwork.styles.length === 1 ? 'Style' : 'Styles'}}</h5>
-          <p>{{artwork.getFormattedStyles()}}</p> 
+          <h5>Categories</h5>
+          <p>{{artwork.categories}}</p> 
         </ng-container>
-        <ng-container *ngIf="artwork.details.media != ''">
+        <ng-container *ngIf="artwork.media != ''">
           <h5>Media</h5>
-          <p>{{artwork.details.media}}</p> 
+          <p>{{artwork.media}}</p> 
         </ng-container>
-        <ng-container *ngIf="artwork.details.getDimensions() != ''">
+        <ng-container *ngIf="artwork.dimensions != ''">
           <h5>Dimensions</h5>
-          <p>{{artwork.details.getDimensions()}}</p> 
+          <p>{{artwork.dimensions}}</p> 
         </ng-container>
       </div>
     </div>

@@ -1,5 +1,5 @@
-<div class="card artwork-card">
-  <img class="card-image" [src]="artwork.details.getImageURL()" />
+<div class="card artwork-card" *ngIf="artwork != null">
+  <img class="card-image" [src]="artwork.getImageURL()" />
   <h5>{{artwork.title}}</h5>
-  <p>{{artwork.artist.getFullName()}} ({{artwork.details.yearCreated}})</p> 
+  <p>{{artwork.artist}} ({{artwork.yearCreated}})</p> 
 </div>

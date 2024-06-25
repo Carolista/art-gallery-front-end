@@ -1,12 +1,15 @@
-<main *ngIf="!isLoading">
-  <h1>Artworks</h1>
-
-  <div class="artwork-container">
-    <ng-container *ngFor="let artwork of artworks">
-      <a [href]="'/artworks/' + artwork.id">
-        <app-artwork-card [artwork]="artwork"></app-artwork-card>
-      </a>
+<main>
+    <h1>Artworks</h1>
+    
+    <ng-container *ngIf="isLoading">
+        <p>Retrieving artworks from database...</p>
     </ng-container>
-  </div>
 
+    <div class="artwork-container" *ngIf="!isLoading">
+        <ng-container *ngFor="let artwork of artworks">
+        <a [href]="'/artworks/' + artwork.id">
+            <app-artwork-card [artwork]="artwork"></app-artwork-card>
+        </a>
+        </ng-container>
+    </div>
 </main>

@@ -1,32 +1,29 @@
-import { Artist } from "./artist";
-import { ArtworkDetails } from "./artwork-details";
-import { Style } from "./style";
-
 export class Artwork {
 
   id: number;
   title: string;
-  artist: Artist;
-  styles: Style[];
-  details: ArtworkDetails;
+  artist: string;
+  categories: string;
+  yearCreated: string;
+  media: string;
+  description: string;
+  dimensions: string;
+  imageId: string;
 
-  constructor(id: number, title: string, artist: Artist, styles: Style[], details: ArtworkDetails) {
+  constructor(id: number, title: string, artist: string, categories: string, yearCreated: string, media: string, description: string, dimensions: string, imageId: string) {
     this.id = id;
     this.title = title;
     this.artist = artist; 
-    this.styles = styles;
-    this.details = details;
+    this.categories = categories;
+    this.yearCreated = yearCreated;
+    this.media = media;
+    this.description = description;
+    this.dimensions = dimensions;
+    this.imageId = imageId;
   }
 
-  getFormattedStyles(): string {
-    let styleNames = "";
-    for (let i=0; i < this.styles.length; i++) {
-        styleNames += this.styles[i].name;
-        if (i < this.styles.length - 1) {
-            styleNames += ", ";
-        }
-    }
-    return styleNames;
+  getImageURL(): string {
+    return "https://drive.google.com/thumbnail?sz=w1000&id=" + this.imageId;
   }
 
 }

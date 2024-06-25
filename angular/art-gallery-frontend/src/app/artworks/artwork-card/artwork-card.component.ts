@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Artist } from 'src/app/classes/artist';
 import { Artwork } from 'src/app/classes/artwork';
-import { ArtworkDetails } from 'src/app/classes/artwork-details';
 
 @Component({
   selector: 'app-artwork-card',
@@ -10,12 +8,11 @@ import { ArtworkDetails } from 'src/app/classes/artwork-details';
 })
 export class ArtworkCardComponent implements OnInit {
 
-  @Input() artwork: Artwork = new Artwork(0, "", new Artist(0, "", "", ""), [], new ArtworkDetails(0, "", "", "", 0, 0, 0, ""));
+  @Input() artwork: Artwork | null = null;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 
 }
